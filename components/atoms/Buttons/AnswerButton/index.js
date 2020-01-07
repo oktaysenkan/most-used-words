@@ -23,10 +23,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderLeftWidth: 3,
+    borderLeftColor: 'white',
   },
   answerText: {
-    paddingLeft: 30
-  }
+    paddingLeft: 30,
+  },
 });
 
 export default AnswerButton

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: Screen.height * 0.22,
+    paddingVertical: Screen.height * 0.20,
   }
 });
 

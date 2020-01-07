@@ -25,7 +25,7 @@ export class AnswerButtons extends Component {
 
 const styles = StyleSheet.create({
   answerButton: {
-    marginBottom: 5
+    marginBottom: 10
   }
 });
 
