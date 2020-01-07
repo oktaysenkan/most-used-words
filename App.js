@@ -15,6 +15,7 @@ import Word from './components/atoms/Texts/Word';
 import AppContent from './components/molecules/AppContent';
 import Screen from './src/utils/Screen'
 import AnswerButton from './components/atoms/Buttons/AnswerButton';
+import AnswerButtons from './components/organisms/AnswerButtons';
 
 export class App extends Component {
   render() {
@@ -22,7 +23,7 @@ export class App extends Component {
       <View style={styles.container}>
         <AppHeader/>
         <AppContent />
-        <AnswerButton></AnswerButton>
+        <AnswerButtons/>
       </View>
     )
   }

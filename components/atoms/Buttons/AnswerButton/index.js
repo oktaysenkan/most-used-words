@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import AnswerText from '../../Texts/AnswerText'
 import AnswerChoice from '../../Texts/AnswerChoice'
 
@@ -8,7 +8,9 @@ export class AnswerButton extends Component {
     return (
       <TouchableOpacity style={styles.answerButton}>
         <AnswerChoice value='a'/>
-        <AnswerText value='Kaza'/>
+        <View style={styles.answerText}>
+          <AnswerText value='Kaza'/>
+        </View>
       </TouchableOpacity>
     )
   }
@@ -21,6 +23,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  answerText: {
+    paddingLeft: 30
   }
 });
 
