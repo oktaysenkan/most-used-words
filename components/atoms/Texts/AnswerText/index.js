@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.ProductSansMedium,
     fontSize: 12,
     color: 'white',
+    paddingLeft: 30
   }
 });
 
