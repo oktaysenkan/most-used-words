@@ -6,14 +6,16 @@ import StatusBar from '../../atoms/StatusBar'
 
 export class Scoreboard extends Component {
   render() {
+    const {score} = this.props;
+    let value = 100 / (score.totalAnswersCount / score.correctAnswersCount);
     return (
       <View>
         <View style={styles.container}>
-          <RightAnswer value="02" />
-          <TotalAnswer value="01" />
+          <RightAnswer value={score.totalAnswersCount} />
+          <TotalAnswer value={score.correctAnswersCount} />
         </View>
         <View>
-          <StatusBar value={25}/>
+          <StatusBar value={value}/>
         </View>
       </View>
     )

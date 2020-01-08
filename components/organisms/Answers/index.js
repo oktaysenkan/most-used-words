@@ -4,20 +4,19 @@ import AnswerButton from '../../atoms/Buttons/AnswerButton';
 
 export class Answers extends Component {
   render() {
+    let { answers, correctAnswer, onPress } = this.props;
+    const choices = ['a', 'b', 'c', 'd',];
     return (
       <View style={styles.container}>
-        <View style={styles.answerButton}>
-          <AnswerButton />
-        </View>
-        <View style={styles.answerButton}>
-          <AnswerButton />
-        </View>
-        <View style={styles.answerButton}>
-          <AnswerButton />
-        </View>
-        <View style={styles.answerButton}>
-          <AnswerButton />
-        </View>
+        {
+          answers.map((answer, i) => {
+            return <View
+              key={i}
+              style={styles.answerButton}>
+              <AnswerButton choice={choices[i]} value={answer} onPress={onPress} isCorrect={(answer === correctAnswer)}/>
+            </View>
+          })
+        }
       </View>
     )
   }

@@ -4,18 +4,24 @@ import { Fonts } from '../../../../src/config/Fonts';
 
 export class AnswerText extends Component {
   render() {
-    const {value} = this.props;
+    const {value, color} = this.props;
+    const style = color ? styles[color] : styles.default;
     return (
-      <Text style={styles.answerText}>{value}</Text>
+      <Text style={style}>{value}</Text>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  answerText: {
+  default: {
     fontFamily: Fonts.ProductSansMedium,
     fontSize: 12,
     color: 'white',
+  },
+  reverse: {
+    fontFamily: Fonts.ProductSansMedium,
+    fontSize: 12,
+    color: '#1046FF',
   }
 });
 

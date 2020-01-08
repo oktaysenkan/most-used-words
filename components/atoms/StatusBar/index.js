@@ -3,7 +3,10 @@ import { Text, View, StyleSheet } from 'react-native'
 
 export class StatusBar extends Component {
   render() {
-    const { value } = this.props
+    let {value} = this.props
+    if (!value) {
+      value = 0;
+    }
     return (
       <View>
         <View style={{...styles.statusBar, width: `${value}%` }}/>

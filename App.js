@@ -8,17 +8,67 @@ import MostUsed1000Word from './src/words/MostUsed1000Word';
 
 
 export class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      word: {},
+      answers: [],
+      score: {
+        totalAnswersCount: 0,
+        correctAnswersCount: 0,
+      }
+    }
+  }
+
   componentDidMount = () => {
+    this.getNewWord();
+  }
+
+  getNewWord = () => {
     const newWord = MostUsed1000Word.getRandomWord();
     console.log(newWord);
+    this.setState({word: newWord});
+    const answers = [
+      newWord.Turkish,
+      MostUsed1000Word.getRandomWord().Turkish,
+      MostUsed1000Word.getRandomWord().Turkish,
+      MostUsed1000Word.getRandomWord().Turkish,
+    ]
+    answers.sort((a, b) => (0.5 - Math.random()));
+    this.setState({answers});
+  }
+
+  answersOnPress = (answer) => {
+    const {word, score} = this.state;
+    if (word.Turkish === answer) {
+      this.setState({
+        score: {
+          ...score,
+          correctAnswersCount: score.correctAnswersCount + 1,
+          totalAnswersCount: score.totalAnswersCount + 1,
+        }
+      });
+    } else {
+      this.setState({
+        score: {
+          ...score,
+          totalAnswersCount: score.totalAnswersCount + 1,
+        }
+      });
+    }
+    setTimeout(() => {
+      this.getNewWord();
+    }, 400);
   }
 
   render() {
+    const {word, answers, score} = this.state;
     return (
       <View style={styles.container}>
-        <Scoreboard/>
-        <Question/>
-        <Answers/>
+        <Scoreboard score={score}/>
+        <Question word={word.English}/>
+        <Answers answers={answers} correctAnswer={word.Turkish} onPress={this.answersOnPress}/>
       </View>
     )
   }

@@ -4,9 +4,10 @@ import Word from '../../atoms/Texts/Word'
 
 export class Question extends Component {
   render() {
+    let {word} = this.props
     return (
       <View style={styles.container}>
-        <Word value="Accident"/>
+        <Word value={word}/>
       </View>
     )
   }
