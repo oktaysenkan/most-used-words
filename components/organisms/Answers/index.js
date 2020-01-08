@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 import AnswerButton from '../../atoms/Buttons/AnswerButton';
 
-export class AnswerButtons extends Component {
+export class Answers extends Component {
   render() {
     return (
       <View>
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AnswerButtons
+export default Answers

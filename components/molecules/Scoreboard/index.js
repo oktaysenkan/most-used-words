@@ -4,7 +4,7 @@ import RightAnswer from '../../atoms/Texts/RightAnswer'
 import TotalAnswer from '../../atoms/Texts/TotalAnswer'
 import StatusBar from '../../atoms/StatusBar'
 
-export class AppHeader extends Component {
+export class Scoreboard extends Component {
   render() {
     return (
       <View>
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AppHeader
+export default Scoreboard

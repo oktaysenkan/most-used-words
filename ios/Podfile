@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'most_used_words' do
-  # Pods for most_used_words
+target 'MostUsedWords' do
+  # Pods for MostUsedWords
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'most_used_words' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'most_used_wordsTests' do
+  target 'MostUsedWordsTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +42,10 @@ target 'most_used_words' do
   use_native_modules!
 end
 
-target 'most_used_words-tvOS' do
-  # Pods for most_used_words-tvOS
+target 'MostUsedWords-tvOS' do
+  # Pods for MostUsedWords-tvOS
 
-  target 'most_used_words-tvOSTests' do
+  target 'MostUsedWords-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

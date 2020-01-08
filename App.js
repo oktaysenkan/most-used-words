@@ -1,29 +1,17 @@
-import React, { Component } from 'react'
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Dimensions
-} from 'react-native';
-import RightAnswer from './components/atoms/Texts/RightAnswer';
-import TotalAnswer from './components/atoms/Texts/TotalAnswer';
-import AppHeader from './components/molecules/AppHeader';
-import Word from './components/atoms/Texts/Word';
-import AppContent from './components/molecules/AppContent';
+import React, { Component } from 'react';
+import { StyleSheet,View} from 'react-native';
 import Screen from './src/utils/Screen'
-import AnswerButton from './components/atoms/Buttons/AnswerButton';
-import AnswerButtons from './components/organisms/AnswerButtons';
+import Scoreboard from './components/molecules/Scoreboard';
+import Question from './components/molecules/Question';
+import Answers from './components/organisms/Answers';
 
 export class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <AppHeader/>
-        <AppContent />
-        <AnswerButtons/>
+        <Scoreboard/>
+        <Question/>
+        <Answers/>
       </View>
     )
   }

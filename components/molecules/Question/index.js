@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import Word from '../../atoms/Texts/Word'
 import Screen from '../../../src/utils/Screen'
 
-export class AppContent extends Component {
+export class Question extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AppContent
+export default Question

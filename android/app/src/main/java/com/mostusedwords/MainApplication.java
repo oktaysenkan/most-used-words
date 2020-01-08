@@ -1,4 +1,4 @@
-package com.most_used_words;
+package com.mostusedwords;
 
 import android.app.Application;
 import android.content.Context;
