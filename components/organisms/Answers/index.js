@@ -5,7 +5,7 @@ import AnswerButton from '../../atoms/Buttons/AnswerButton';
 export class Answers extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <View style={styles.answerButton}>
           <AnswerButton />
         </View>
@@ -24,6 +24,9 @@ export class Answers extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 30
+  },
   answerButton: {
     marginBottom: 10
   }
