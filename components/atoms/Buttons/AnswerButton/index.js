@@ -11,24 +11,13 @@ export class AnswerButton extends Component {
 
     this.state = {
       clicked: false,
-      fadeAnim: new Animated.Value(0),
       scaleAnim: new Animated.Value(1),
-      backgroundColorAnim: new Animated.Value('rgba(255, 255, 255, 0.1)'),
     }
-  }
-
-  componentDidMount = () => {
-    Animated.timing(
-      this.state.fadeAnim,
-      { toValue: 1, duration: 600, useNativeDriver: true },
-    ).start();
   }
 
   onPress = (answer) => {
     const { onPress } = this.props;
-
     this.setState({ clicked: true });
-
     Animated.sequence([
       Animated.timing(this.state.scaleAnim, {
         toValue: 0.90,
@@ -42,8 +31,8 @@ export class AnswerButton extends Component {
       })
     ]).start(() => {
       this.setState({ clicked: false });
-    })
-    onPress(answer);
+      onPress(answer);
+    });
   }
 
   render() {
@@ -51,7 +40,6 @@ export class AnswerButton extends Component {
     let { clicked } = this.state;
 
     const animatedStyle = {
-      opacity: this.state.fadeAnim,
       transform: [{scale: this.state.scaleAnim}],
       backgroundColor: clicked ? '#FFFFFF' : 'rgba(255, 255, 255, 0.1)',
       borderLeftColor: clicked ? '#0630bd' : 'white',

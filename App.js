@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet,View} from 'react-native';
+import { StyleSheet, View, Animated} from 'react-native';
 import Screen from './src/utils/Screen'
 import Scoreboard from './components/molecules/Scoreboard';
 import Question from './components/molecules/Question';
@@ -17,12 +17,56 @@ export class App extends Component {
       score: {
         totalAnswersCount: 0,
         correctAnswersCount: 0,
-      }
+      },
+      transformAnim: new Animated.Value(0),
+      fadeAnim: new Animated.Value(0),
     }
   }
 
   componentDidMount = () => {
+    this.openingAnimation();
     this.getNewWord();
+  }
+
+  openingAnimation = () => {
+    Animated.timing(this.state.fadeAnim, {
+      toValue: 1,
+      duration: 600,
+      useNativeDriver: true
+    }).start();
+  }
+
+  OnPressAnimation = () => {
+    Animated.timing(this.state.fadeAnim, {
+      toValue: 0,
+      duration: 600,
+      useNativeDriver: true
+    }).start(() => {
+      this.getNewWord();
+      Animated.timing(this.state.fadeAnim, {
+        toValue: 1,
+        duration: 600,
+        useNativeDriver: true
+      }).start();
+    })
+
+    Animated.sequence([
+      Animated.timing(this.state.transformAnim, {
+        toValue: -100,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+      Animated.timing(this.state.transformAnim, {
+        toValue: 100,
+        duration: 0,
+        useNativeDriver: true
+      }),
+      Animated.timing(this.state.transformAnim, {
+        toValue: 0,
+        duration: 600,
+        useNativeDriver: true
+      })
+    ]).start();
   }
 
   getNewWord = () => {
@@ -41,6 +85,7 @@ export class App extends Component {
 
   answersOnPress = (answer) => {
     const {word, score} = this.state;
+    this.OnPressAnimation();
     if (word.Turkish === answer) {
       this.setState({
         score: {
@@ -57,18 +102,22 @@ export class App extends Component {
         }
       });
     }
-    setTimeout(() => {
-      this.getNewWord();
-    }, 400);
   }
 
   render() {
     const {word, answers, score} = this.state;
+    const animatedStyle = {
+      flex: 1,
+      opacity: this.state.fadeAnim,
+      transform: [{translateX: this.state.transformAnim}],
+    }
     return (
       <View style={styles.container}>
-        <Scoreboard score={score}/>
-        <Question word={word.English}/>
-        <Answers answers={answers} correctAnswer={word.Turkish} onPress={this.answersOnPress}/>
+          <Scoreboard score={score}/>
+          <Animated.View style={animatedStyle}>
+            <Question word={word.English}/>
+            <Answers answers={answers} correctAnswer={word.Turkish} onPress={this.answersOnPress}/>
+          </Animated.View>
       </View>
     )
   }
