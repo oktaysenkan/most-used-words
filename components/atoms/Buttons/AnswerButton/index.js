@@ -36,12 +36,26 @@ export class AnswerButton extends Component {
   }
 
   render() {
-    const { value, choice, onPress, isCorrect } = this.props;
+    const { value, choice, onPress, isCorrect, showResult } = this.props;
     let { clicked } = this.state;
+
+    let backgroundColor;
+    if (showResult) {
+      if (isCorrect) 
+        backgroundColor = '#197d44';
+      else {
+        backgroundColor = 'rgba(255, 255, 255, 0.1)';
+      }
+    } else {
+      backgroundColor = 'rgba(255, 255, 255, 0.1)';
+    }
+    if (clicked)
+      backgroundColor = '#FFFFFF';
 
     const animatedStyle = {
       transform: [{scale: this.state.scaleAnim}],
-      backgroundColor: clicked ? '#FFFFFF' : 'rgba(255, 255, 255, 0.1)',
+      backgroundColor,
+      borderLeftColor: clicked ? '#0630bd' : 'white',
       borderLeftColor: clicked ? '#0630bd' : 'white',
     }
 

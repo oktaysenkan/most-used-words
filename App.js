@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Animated} from 'react-native';
+import { StyleSheet, View, Animated, StatusBar} from 'react-native';
 import Screen from './src/utils/Screen'
 import Scoreboard from './components/molecules/Scoreboard';
 import Question from './components/molecules/Question';
 import Answers from './components/organisms/Answers';
 import MostUsed1000Word from './src/words/MostUsed1000Word';
-
 
 export class App extends Component {
   constructor(props) {
@@ -19,6 +18,7 @@ export class App extends Component {
         correctAnswersCount: 0,
       },
       isAnswerRight: null,
+      showResult: false,
       transformAnim: new Animated.Value(0),
       fadeAnim: new Animated.Value(0),
     }
@@ -72,8 +72,10 @@ export class App extends Component {
 
   getNewWord = () => {
     const newWord = MostUsed1000Word.getRandomWord();
-    console.log(newWord);
-    this.setState({word: newWord});
+    this.setState({
+      word: newWord,
+      showResult: false,
+    });
     const answers = [
       newWord.Turkish,
       MostUsed1000Word.getRandomWord().Turkish,
@@ -94,14 +96,15 @@ export class App extends Component {
         correctAnswersCount: (isAnswerRight) ? score.correctAnswersCount + 1 : score.correctAnswersCount,
       },
       isAnswerRight,
+      showResult: true,
     });
   }
 
   render() {
-    const {word, answers, score, isAnswerRight} = this.state;
+    const {word, answers, score, isAnswerRight, showResult} = this.state;
     const containerStyle = {
       ...styles.container,
-      backgroundColor: (isAnswerRight === true) ? "#219653" : (isAnswerRight === false) ? "#DE3535" : "#1544E3"
+      backgroundColor: (isAnswerRight === true) ? '#219653' : (isAnswerRight === false) ? '#DE3535' : '#1544E3'
     }
     const animatedStyle = {
       flex: 1,
@@ -110,10 +113,11 @@ export class App extends Component {
     }
     return (
       <View style={containerStyle}>
+        <StatusBar translucent backgroundColor='transparent' />
           <Scoreboard score={score}/>
           <Animated.View style={animatedStyle}>
             <Question word={word.English}/>
-            <Answers answers={answers} correctAnswer={word.Turkish} onPress={this.answerOnPress}/>
+            <Answers answers={answers} correctAnswer={word.Turkish} onPress={this.answerOnPress} showResult={showResult}/>
           </Animated.View>
       </View>
     )
