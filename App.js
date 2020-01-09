@@ -18,6 +18,7 @@ export class App extends Component {
         totalAnswersCount: 0,
         correctAnswersCount: 0,
       },
+      isAnswerRight: null,
       transformAnim: new Animated.Value(0),
       fadeAnim: new Animated.Value(0),
     }
@@ -83,40 +84,36 @@ export class App extends Component {
     this.setState({answers});
   }
 
-  answersOnPress = (answer) => {
+  answerOnPress = (answer) => {
     const {word, score} = this.state;
+    const isAnswerRight = (word.Turkish === answer);
     this.OnPressAnimation();
-    if (word.Turkish === answer) {
-      this.setState({
-        score: {
-          ...score,
-          correctAnswersCount: score.correctAnswersCount + 1,
-          totalAnswersCount: score.totalAnswersCount + 1,
-        }
-      });
-    } else {
-      this.setState({
-        score: {
-          ...score,
-          totalAnswersCount: score.totalAnswersCount + 1,
-        }
-      });
-    }
+    this.setState({
+      score: {
+        totalAnswersCount: score.totalAnswersCount + 1,
+        correctAnswersCount: (isAnswerRight) ? score.correctAnswersCount + 1 : score.correctAnswersCount,
+      },
+      isAnswerRight,
+    });
   }
 
   render() {
-    const {word, answers, score} = this.state;
+    const {word, answers, score, isAnswerRight} = this.state;
+    const containerStyle = {
+      ...styles.container,
+      backgroundColor: (isAnswerRight === true) ? "#219653" : (isAnswerRight === false) ? "#DE3535" : "#1544E3"
+    }
     const animatedStyle = {
       flex: 1,
       opacity: this.state.fadeAnim,
       transform: [{translateX: this.state.transformAnim}],
     }
     return (
-      <View style={styles.container}>
+      <View style={containerStyle}>
           <Scoreboard score={score}/>
           <Animated.View style={animatedStyle}>
             <Question word={word.English}/>
-            <Answers answers={answers} correctAnswer={word.Turkish} onPress={this.answersOnPress}/>
+            <Answers answers={answers} correctAnswer={word.Turkish} onPress={this.answerOnPress}/>
           </Animated.View>
       </View>
     )
@@ -126,10 +123,9 @@ export class App extends Component {
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    backgroundColor: '#1544E3',
     height: Screen.height,
     width: Screen.width,
-  }
+  },
 });
 
 export default App;

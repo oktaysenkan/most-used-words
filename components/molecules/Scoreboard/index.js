@@ -11,8 +11,8 @@ export class Scoreboard extends Component {
     return (
       <View>
         <View style={styles.container}>
-          <RightAnswer value={score.totalAnswersCount} />
-          <TotalAnswer value={score.correctAnswersCount} />
+          <RightAnswer value={score.correctAnswersCount} />
+          <TotalAnswer value={score.totalAnswersCount} />
         </View>
         <View>
           <StatusBar value={value}/>
