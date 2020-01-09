@@ -10,7 +10,13 @@ export class Answers extends Component {
       <View style={styles.container}>
         { answers.map((answer, i) => {
             return <View key={i} style={styles.answerButton}>
-              <AnswerButton choice={choices[i]} value={answer} onPress={onPress} isCorrect={(answer === correctAnswer)} showResult={showResult}/>
+              <AnswerButton
+                choice={choices[i]}
+                value={answer}
+                onPress={onPress}
+                isCorrect={(answer === correctAnswer)}
+                showResult={showResult}
+              />
             </View>
           }) }
       </View>

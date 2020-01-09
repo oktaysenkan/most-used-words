@@ -40,13 +40,13 @@ export class App extends Component {
   OnPressAnimation = () => {
     Animated.timing(this.state.fadeAnim, {
       toValue: 0,
-      duration: 600,
+      duration: 800,
       useNativeDriver: true
     }).start(() => {
       this.getNewWord();
       Animated.timing(this.state.fadeAnim, {
         toValue: 1,
-        duration: 600,
+        duration: 800,
         useNativeDriver: true
       }).start();
     })
@@ -54,7 +54,7 @@ export class App extends Component {
     Animated.sequence([
       Animated.timing(this.state.transformAnim, {
         toValue: -100,
-        duration: 600,
+        duration: 800,
         useNativeDriver: true,
       }),
       Animated.timing(this.state.transformAnim, {
@@ -64,7 +64,7 @@ export class App extends Component {
       }),
       Animated.timing(this.state.transformAnim, {
         toValue: 0,
-        duration: 600,
+        duration: 800,
         useNativeDriver: true
       })
     ]).start();
