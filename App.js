@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Animated, StatusBar} from 'react-native';
-import Screen from './src/utils/Screen'
-import Scoreboard from './components/molecules/Scoreboard';
-import Question from './components/molecules/Question';
-import Answers from './components/organisms/Answers';
+import Screen from 'utils/Screen'
+import Scoreboard from 'components/molecules/Scoreboard';
+import Question from 'components/molecules/Question';
+import Answers from 'components/organisms/Answers';
 import MostUsed1000Word from './src/words/MostUsed1000Word';
 
 export class App extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
-import { Fonts } from '../../../../src/config/Fonts';
+import { Fonts } from 'configs/Fonts';
 
 export class Word extends Component {
   render() {

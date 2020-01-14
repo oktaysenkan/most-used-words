@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet } from 'react-native'
-import { Fonts } from '../../../../src/config/Fonts';
+import { Fonts } from 'configs/Fonts';
 
-export class AnswerText extends Component {
+export class AnswerChoice extends Component {
   render() {
     const {value, color} = this.props;
     const style = color ? styles[color] : styles.default;
@@ -14,15 +14,17 @@ export class AnswerText extends Component {
 
 const styles = StyleSheet.create({
   default: {
-    fontFamily: Fonts.ProductSansMedium,
+    fontFamily: Fonts.ProductSansRegular,
     fontSize: 12,
     color: 'white',
+    opacity: 0.65,
   },
   reverse: {
-    fontFamily: Fonts.ProductSansMedium,
+    fontFamily: Fonts.ProductSansRegular,
     fontSize: 12,
     color: '#1046FF',
+    opacity: 0.65,
   }
 });
 
-export default AnswerText
+export default AnswerChoice

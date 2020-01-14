@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity, View, Text, TouchableWithoutFeedback, Animated, Easing } from 'react-native'
-import AnswerText from '../../Texts/AnswerText'
-import AnswerChoice from '../../Texts/AnswerChoice'
+import AnswerText from 'components/atoms/Texts/AnswerText'
+import AnswerChoice from 'components/atoms/Texts/AnswerChoice'
 
 const AnimatedButton = Animated.createAnimatedComponent(TouchableOpacity);
 

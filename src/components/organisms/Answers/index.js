@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
-import AnswerButton from '../../atoms/Buttons/AnswerButton';
+import AnswerButton from 'components/atoms/Buttons/AnswerButton';
 
 export class Answers extends Component {
   render() {

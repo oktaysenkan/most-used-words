@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import RightAnswer from '../../atoms/Texts/RightAnswer'
-import TotalAnswer from '../../atoms/Texts/TotalAnswer'
-import StatusBar from '../../atoms/StatusBar'
+import RightAnswer from 'components/atoms/Texts/RightAnswer'
+import TotalAnswer from 'components/atoms/Texts/TotalAnswer'
+import StatusBar from 'components/atoms/StatusBar'
 
 export class Scoreboard extends Component {
   render() {

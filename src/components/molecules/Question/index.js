@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
-import Word from '../../atoms/Texts/Word'
+import Word from 'components/atoms/Texts/Word'
 
 export class Question extends Component {
   render() {
